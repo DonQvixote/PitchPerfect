@@ -5,3 +5,5 @@
   Created by 夏语诚 on 2017/6/19.
   Copyright © 2017年 Banana Inc. All rights reserved.
 */
+
+"Microphone Access" = "Allow Pitch Perfect to access your microphone in \"Settings\"->\"Privacy\"->\"Microphone\"";

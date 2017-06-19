@@ -20,6 +20,26 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var stopRecordingButton: UIButton!
     
     @IBAction func recordAudio(_ sender: UIButton) {
+        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio) {
+        case .denied, .restricted:
+            let message = NSLocalizedString("Microphone Access", comment: "Microphone Access")
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        case .authorized:
+            startRecording()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio) { granted in
+                if granted {
+                    DispatchQueue.main.async {
+                        self.startRecording()
+                    }
+                }
+            }
+        }
+    }
+    
+    func startRecording() {
         recordingLabel.text = NSLocalizedString("Recording in Progress", comment: "Recording")
         stopRecordingButton.isEnabled = true
         recordButton.isEnabled = false
@@ -37,7 +57,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        
     }
     
     
@@ -71,7 +90,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if flag {
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
-            print("Recording was not successful.")
+            let message = NSLocalizedString("Recording was not successful.", comment: "Recording failed")
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

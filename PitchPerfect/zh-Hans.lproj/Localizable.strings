@@ -9,3 +9,5 @@
 "Tap to Record" = "点击录音";
 "Recording in Progress" = "正在录音";
 "Play Your Voice" = "音调效果";
+"Microphone Access" = "前往\"设置\"->\"隐私\"->\"麦克风\"允许完美音调访问麦克风";
+"Recording was not successful." = "录音失败";
