@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  PitchPerfect
+
+  Created by 夏语诚 on 2017/6/19.
+  Copyright © 2017年 Banana Inc. All rights reserved.
+*/
+
+"Tap to Record" = "点击录音";
+"Recording in Progress" = "正在录音";
+"Play Your Voice" = "音调效果";

@@ -20,7 +20,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var stopRecordingButton: UIButton!
     
     @IBAction func recordAudio(_ sender: UIButton) {
-        recordingLabel.text = "Recording in Progress"
+        recordingLabel.text = NSLocalizedString("Recording in Progress", comment: "Recording")
         stopRecordingButton.isEnabled = true
         recordButton.isEnabled = false
         
@@ -44,7 +44,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(_ sender: UIButton) {
         recordButton.isEnabled = true
         stopRecordingButton.isEnabled = false
-        recordingLabel.text = "Tap to Record"
+        recordingLabel.text =  NSLocalizedString("Tap to Record", comment: "Record")
         
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()

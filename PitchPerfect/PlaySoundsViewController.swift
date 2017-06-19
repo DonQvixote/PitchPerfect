@@ -60,7 +60,7 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = "Play Your Voice"
+        title = NSLocalizedString("Play Your Voice", comment: "Play")
         setupAudio()
     }
     
