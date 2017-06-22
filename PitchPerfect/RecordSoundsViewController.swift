@@ -31,8 +31,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         case .notDetermined:
             AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio) { granted in
                 if granted {
-                    DispatchQueue.main.async {
-                        self.startRecording()
+                    DispatchQueue.main.async { [weak self] in
+                        if let strongSelf = self {
+                            strongSelf.startRecording()
+                        }
                     }
                 }
             }
